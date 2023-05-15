@@ -1,5 +1,7 @@
 import ArtPiecePreview from "../ArtPiecePreview";
 import styled from "styled-components";
+import { ArtpieceInfoContext, PiecesContext } from "@/pages/_app";
+import { useContext } from "react";
 
 const List = styled.ul`
   list-style: none;
@@ -17,7 +19,9 @@ const List = styled.ul`
   }
 `;
 
-export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
+export default function ArtPieces({ pieces }) {
+  const { artPiecesInfo, toggleFavorite } = useContext(ArtpieceInfoContext);
+
   return (
     <List>
       {pieces?.map((piece) => (
@@ -31,7 +35,7 @@ export default function ArtPieces({ pieces, artPiecesInfo, onToggleFavorite }) {
               artPiecesInfo?.find((artPiece) => artPiece.slug === piece.slug)
                 ?.isFavorite
             }
-            onToggleFavorite={() => onToggleFavorite(piece.slug)}
+            onToggleFavorite={() => toggleFavorite(piece.slug)}
           />
         </li>
       ))}

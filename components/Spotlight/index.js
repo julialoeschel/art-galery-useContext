@@ -25,8 +25,8 @@ export default function Spotlight({
       <ImageContainer>
         <FavoriteButton
           isFavorite={isFavorite}
-          onToggleFavorite={onToggleFavorite}
           positionAbsolute={true}
+          onToggleFavorite={onToggleFavorite}
         />
         <StyledImage
           src={image}

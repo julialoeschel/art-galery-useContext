@@ -2,6 +2,8 @@ import GlobalStyle from "../styles";
 import useSWR from "swr";
 import Layout from "../components/Layout.js";
 import useLocalStorageState from "use-local-storage-state";
+import { createContext } from "react";
+import ArtpiecesInfoProvider from "@/Contexts/ArtpiecesInfoProvider";
 
 const fetcher = async (...args) => {
   const response = await fetch(...args);
@@ -10,6 +12,9 @@ const fetcher = async (...args) => {
   }
   return await response.json();
 };
+
+export const PiecesContext = createContext(null);
+//export const ArtpieceInfoContext = createContext(null);
 
 export default function App({ Component, pageProps }) {
   const { data, isLoading, error } = useSWR(
@@ -21,7 +26,8 @@ export default function App({ Component, pageProps }) {
     { defaultValue: [] }
   );
 
-  function handleToggleFavorite(slug) {
+  function toggleFavorite(slug) {
+    console.log("yes");
     setArtPiecesInfo((prev) => {
       const artPiece = prev.find((piece) => piece.slug === slug);
       if (artPiece) {
@@ -58,13 +64,11 @@ export default function App({ Component, pageProps }) {
   return (
     <Layout>
       <GlobalStyle />
-      <Component
-        {...pageProps}
-        pieces={isLoading || error ? [] : data}
-        artPiecesInfo={artPiecesInfo}
-        onToggleFavorite={handleToggleFavorite}
-        addComment={addComment}
-      />
+      <PiecesContextProvider>
+        <PiecesInfoContextProvider>
+          <Component {...pageProps} />
+        </PiecesInfoContextProvider>
+      </PiecesContextProvider>
     </Layout>
   );
 }

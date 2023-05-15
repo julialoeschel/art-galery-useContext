@@ -63,8 +63,8 @@ export default function ArtPiecePreview({
       <ImageContainer>
         <FavoriteButton
           isFavorite={isFavorite}
-          onToggleFavorite={onToggleFavorite}
           positionAbsolute={true}
+          onToggleFavorite={onToggleFavorite}
         />
         <StyledImage
           src={image}
