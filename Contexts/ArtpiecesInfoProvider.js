@@ -1,9 +1,11 @@
 import { createContext } from "react";
 import useLocalStorageState from "use-local-storage-state";
+import { useCallback, useMemo } from "react";
 
 export const ArtPiecesInfoContext = createContext(null);
+export const ArtPiecesInfoApiContext = createContext(null);
 
-const PiecesInfoContextProvider = ({ children }) => {
+export const PiecesInfoContextProvider = ({ children }) => {
   const [artPiecesInfo, setArtPiecesInfo] = useLocalStorageState(
     "art-pieces-info",
     { defaultValue: [] }

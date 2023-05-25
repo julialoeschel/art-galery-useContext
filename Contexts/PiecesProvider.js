@@ -10,7 +10,7 @@ const fetcher = async (...args) => {
 };
 export const ArtPiecesContext = createContext();
 
-const PiecesContextProvider = ({ children }) => {
+export const PiecesContextProvider = ({ children }) => {
   const { data, isLoading, error } = useSWR(
     "https://example-apis.vercel.app/api/art",
     fetcher

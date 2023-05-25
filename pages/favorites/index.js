@@ -1,10 +1,10 @@
 import ArtPieces from "../../components/ArtPieces";
-import { PiecesContext, ArtpieceInfoContext } from "../_app.js";
+import { ArtPiecesContext, ArtPiecesInfoContext } from "../_app.js";
 import { useContext } from "react";
 
 export default function FavoritesPage({ onArtPiecesInfo }) {
-  const pieces = useContext(PiecesContext);
-  const { artPiecesInfo } = useContext(ArtpieceInfoContext);
+  const pieces = useContext(ArtPiecesContext);
+  const artPiecesInfo = useContext(ArtPiecesInfoContext);
 
   const favorites = pieces.filter((piece) =>
     artPiecesInfo.find(

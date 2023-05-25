@@ -1,6 +1,6 @@
 import ArtPiecePreview from "../ArtPiecePreview";
 import styled from "styled-components";
-import { ArtpieceInfoContext, PiecesContext } from "@/pages/_app";
+import { ArtPiecesInfoContext } from "../../pages/_app";
 import { useContext } from "react";
 
 const List = styled.ul`
@@ -20,7 +20,7 @@ const List = styled.ul`
 `;
 
 export default function ArtPieces({ pieces }) {
-  const { artPiecesInfo, toggleFavorite } = useContext(ArtpieceInfoContext);
+  const { artPiecesInfo, toggleFavorite } = useContext(ArtPiecesInfoContext);
 
   return (
     <List>

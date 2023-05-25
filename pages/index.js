@@ -1,8 +1,13 @@
 import Head from "next/head.js";
 import Spotlight from "../components/Spotlight/index.js";
-import { useEffect, useState, useContext } from "react";
+import { useContext } from "react";
+import {
+  ArtPiecesContext,
+  ArtPiecesInfoApiContext,
+  ArtPiecesInfoContext,
+} from "./_app.js";
+import { useEffect, useState } from "react";
 import styled from "styled-components";
-import { PiecesContext, ArtpieceInfoContext } from "./_app.js";
 
 const ButtonContainer = styled.div`
   text-align: center;
@@ -25,10 +30,11 @@ function randomIndex(arrayLength) {
   return Math.floor(Math.random() * (arrayLength - 1));
 }
 
-export default function SpotlightPage({}) {
+export default function SpotlightPage() {
+  const pieces = useContext(ArtPiecesContext);
+  const artPiecesInfo = useContext(ArtPiecesInfoContext);
+  const { toggleFavorite } = useContext(ArtPiecesInfoApiContext);
   const [index, setIndex] = useState(null);
-  const pieces = useContext(PiecesContext);
-  const { artPiecesInfo, toggleFavorite } = useContext(ArtpieceInfoContext);
 
   useEffect(() => {
     if (pieces) {

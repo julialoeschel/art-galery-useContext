@@ -1,7 +1,5 @@
 import Image from "next/image.js";
 import styled from "styled-components";
-import { ArtpieceInfoContext } from "@/pages/_app";
-import { useContext } from "react";
 
 const Button = styled.button`
   position: ${({ positionAbsolute }) =>
@@ -24,8 +22,6 @@ export default function FavoriteButton({
   onToggleFavorite,
   positionAbsolute = false,
 }) {
-  const { toggleFavorite } = useContext(ArtpieceInfoContext);
-
   return (
     <Button
       type="button"
